@@ -1,0 +1,10 @@
+
+export default {
+    ADD_PLAYER : 'ADD_PLAYER',
+    REMOVE_PLAYER : 'REMOVE_PLAYER',
+    ADD_TEAM : 'ADD_TEAM',
+    REMOVE_TEAM : 'REMOVE_TEAM',
+    EDIT_TEAM : 'EDIT_TEAM',
+    EDIT_PLAYER : 'EDIT_PLAYER'
+};
+

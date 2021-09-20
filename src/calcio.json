@@ -1,0 +1,332 @@
+{
+  "teams": [
+    {
+      "name": "Inter",
+      "city": "Milan",
+      "firstColor": "black",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/FC_Internazionale_Milano_2021.svg/2048px-FC_Internazionale_Milano_2021.svg.png",
+      "secondColor": "darkblue",
+      "id": "NTRMLN08",
+      "players": [
+        {
+          "firstName": "Samir",
+          "secondName": "Handanovic",
+          "role": "goalkeeper",
+          "birthDate": "1984-07-14",
+          "birthPlace": "Ljubljana, Slovenia",
+          "id": "SMRHND84",
+
+          "foto": "https://media-foto.tccstatic.com/storage/album/thumb1/8c6ccfc6ad723d0b23a98a3067de9469-04845-1603376694.jpeg"
+        },
+        {
+          "firstName": "Alessandro",
+          "secondName": "Bastoni",
+          "role": "defender",
+          "birthDate": "1999-04-13",
+          "birthPlace": "Casalmaggiore, Italy",
+          "id": "LSSBST99",
+          "foto": "https://images2.corriereobjects.it/methode_image/2020/10/07/Sport/Foto%20Sport%20-%20Trattate/38.0.1123102405-kqFB-U32101794078171st-656x492@Corriere-Web-Sezioni.jpg?v=20201007005850"
+        },
+        {
+          "firstName": "Stefan",
+          "secondName": "DeVrij",
+          "role": "defender",
+          "birthDate": "1992-02-05",
+          "birthPlace": "Ouderkerk, Netherlands",
+          "id": "STFDVR92",
+          "foto": "https://sempreinter.com/wp-content/uploads/2020/06/de-vrij-5-2048x1365.jpg"
+        },
+        {
+          "firstName": "Milan",
+          "secondName": "Skriniar",
+          "role": "defender",
+          "birthDate": "1995-02-11",
+          "birthPlace": "Hronom, Slovakia",
+          "id": "MLNSKR95",
+          "foto": "https://upload.wikimedia.org/wikipedia/commons/7/74/Zen-Int_%281%29.jpg"
+        },
+        {
+          "firstName": "Ivan",
+          "secondName": "Perisic",
+          "role": "midfielder",
+          "birthDate": "1989-02-02",
+          "birthPlace": "Split, Croatia",
+          "id": "VNIPRS89",
+          "foto": "https://www.calcioefinanza.it/wp-content/uploads/2017/09/perisic.jpg"
+        },
+        {
+          "firstName": "Nicolò",
+          "secondName": "Barella",
+          "role": "midfielder",
+          "birthDate": "1997-02-07",
+          "birthPlace": "Cagliari, Italy",
+          "id": "NCLBRL97",
+          "foto": "https://images2.corriereobjects.it/methode_image/2021/03/12/Sport/Foto%20Sport%20-%20Trattate/1298722971-kcMG-U3250369164325LbE-656x492@Corriere-Web-Sezioni.jpg?v=20210313073649"
+        },
+        {
+          "firstName": "Christian",
+          "secondName": "Eriksen",
+          "role": "midfielder",
+          "birthDate": "1992-02-14",
+          "birthPlace": "Middelfart, Denmark",
+          "id": "CHRRKS92",
+          "foto": "https://images2.corriereobjects.it/methode_image/2021/01/08/Sport/Foto%20Sport%20-%20Trattate/1294891782-k9gB-U3230157459960750-656x492@Corriere-Web-Sezioni.jpg?v=20210108185347"
+        },
+        {
+          "firstName": "Marcelo",
+          "secondName": "Brozovic",
+          "role": "midfielder",
+          "birthDate": "1992-11-16",
+          "birthPlace": "Zagreb, Croatia",
+          "id": "MRCBRZ92",
+          "foto": "https://jzsportnews.com/wp-content/uploads/2020/06/1.jpg"
+        },
+        {
+          "firstName": "Achraf",
+          "secondName": "Hakimi",
+          "role": "midfielder",
+          "birthDate": "1998-11-04",
+          "birthPlace": "Madrid, Spain",
+          "id": "CHRHKM98",
+          "foto": "https://cdn.calciomercato.com/images/2020-12/hakimi.inter.2020.21.avanza.750x450.jpg"
+        },
+        {
+          "firstName": "Lautaro",
+          "secondName": "Martinez",
+          "role": "forward",
+          "birthDate": "1997-08-22",
+          "birthPlace": "Bahia Blanca, Argentina",
+          "id": "LTRMRT97",
+          "foto": "https://cdn.tuttosport.com/img/990/495/2020/10/07/115317246-4ac518a9-2f35-43ed-9975-eddfec7d38c0.jpg"
+        },
+        {
+          "firstName": "Romelu",
+          "secondName": "Lukaku",
+          "role": "forward",
+          "birthDate": "1993-05-13",
+          "birthPlace": "Antwerp, Belgium",
+          "id": "RMLLKK93",
+          "foto": "https://www.sportface.it/wp-content/uploads/2019/09/Romelu-Lukaku.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Juventus",
+      "city": "Turin",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Juventus_Logo.png/1200px-Juventus_Logo.png",
+      "firstColor": "white",
+      "secondColor": "black",
+      "id": "JVNTRN97",
+      "players": [
+        {
+          "firstName": "Wojciech",
+          "secondName": "Szczęsny",
+          "role": "goalkeeper",
+          "birthDate": "1990-04-18",
+          "birthPlace": "Warsaw, Poland",
+          "id": "WJCSZC90",
+          "foto": "https://www.calcioefinanza.it/wp-content/uploads/2020/02/Juventus-v-Bayer-Leverkusen-Group-D-UEFA-Champions-League-1581437913.jpg"
+        },
+        {
+          "firstName": "Alex",
+          "secondName": "Sandro",
+          "role": "defender",
+          "birthDate": "1991-01-26",
+          "birthPlace": "Catanduva, Brazil",
+          "id": "LXASND91",
+          "foto": "https://www.calcioefinanza.it/wp-content/uploads/2018/12/Juventus-Napoli-20180929-IMGb37-min.jpg"
+        },
+        {
+          "firstName": "Giorgio",
+          "secondName": "Chiellini",
+          "role": "defender",
+          "birthDate": "1984-08-14",
+          "birthPlace": "Pisa, Italy",
+          "id": "GRGCHL84",
+          "foto": "https://tmw-storage.tccstatic.com/storage/tuttomercatoweb.com/img_notizie/thumb3/57de512fe03c87ad20459526f0955719-81326-95723157c8ebcac4750156d2b21ac04e.jpeg"
+        },
+        {
+          "firstName": "Leonardo",
+          "secondName": "Bonucci",
+          "role": "defender",
+          "birthDate": "1987-05-01",
+          "birthPlace": "Viterbo, Italy",
+          "id": "LNRBNC87",
+          "foto": "https://images.daznservices.com/di/library/GOAL/97/a8/leonardo-bonucci-juventus-2020-21_22w0ax41ltbo1eawoewrw7sib.jpg?t=940796934&quality=60&w=1200&h=800"
+        },
+        {
+          "firstName": "Juan",
+          "secondName": "Cuadrado",
+          "role": "defender",
+          "birthDate": "1988-05-26",
+          "birthPlace": "Necocli, Colombia",
+          "id": "JNUCDR88",
+          "foto": "https://cdn.calciomercato.com/images/2020-12/cuadrado.juve.2020.21.pallone.460x340.jpg"
+        },
+        {
+          "firstName": "Federico",
+          "secondName": "Chiesa",
+          "role": "midfielder",
+          "birthDate": "1997-11-25",
+          "birthPlace": "Genoa, Italy",
+          "id": "FDRCHS97",
+          "foto": "https://www.labaroviola.com/wp-content/uploads/2021/02/chiesa-federico-696x436.jpg"
+        },
+        {
+          "firstName": "Adrien",
+          "secondName": "Rabiot",
+          "role": "midfielder",
+          "birthDate": "1995-04-03",
+          "birthPlace": "Saint-Maurice, France",
+          "id": "DRNRBT95",
+          "foto": "https://www.repstatic.it/content/nazionale/img/2020/07/19/112345710-6f841bdd-a6c4-42be-a316-9a5ebe3bc0cc.jpg"
+        },
+        {
+          "firstName": "Rodrigo",
+          "secondName": "Bentancour",
+          "role": "midfielder",
+          "birthDate": "1997-06-25",
+          "birthPlace": "Nueva Helvecia, Uruguay",
+          "id": "RDRBNT97",
+          "foto": "https://cdn.tuttosport.com/img/990/495/2020/12/21/093055095-bfe7febd-21fa-4d9d-a948-660ba21d553c.jpg"
+        },
+        {
+          "firstName": "Weston",
+          "secondName": "McKennie",
+          "role": "midfielder",
+          "birthDate": "1998-08-28",
+          "birthPlace": "Little Elm, USA",
+          "id": "WSTMCK98",
+          "foto": "https://img-prod.sportmediaset.mediaset.it/images/2020/11/13/100207862-54a6f93d-fd1d-4010-986a-ae0862b5a7fa.jpg"
+        },
+        {
+          "firstName": "Alvaro",
+          "secondName": "Morata",
+          "role": "forward",
+          "birthDate": "1992-11-23",
+          "birthPlace": "Madrid, Spain",
+          "id": "LVRMRT92",
+          "foto": "https://www.calciotoday.it/wp-content/uploads/2021/03/Morata-13.jpg"
+        },
+        {
+          "firstName": "Paulo",
+          "secondName": "Dybala",
+          "role": "forward",
+          "birthDate": "1993-11-15",
+          "birthPlace": "Cordoba, Argentina",
+          "id": "PLADYB93",
+          "foto": "https://static.fanpage.it/wp-content/uploads/sites/27/2021/03/dybala-pirlo-data-ritorno-1615639675244.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Milan",
+      "firstColor": "red",
+      "logo": "https://www.acmilan.com/images/logo.png",
+      "secondColor": "black",
+      "city": "Milan",
+      "id": "MLNMLN99",
+      "players": [
+        {
+          "firstName": "Gianluigi",
+          "secondName": "Donnarumma",
+          "role": "goalkeeper",
+          "birthDate": "1999-02-25",
+          "birthPlace": "Castellammare Di Stabia, Italy",
+          "id": "GNLDNN99",
+          "foto": "https://wips.plug.it/cips/sport.virgilio.it/cms/2020/11/milandonnarumma.jpg"
+        },
+        {
+          "firstName": "Theo",
+          "secondName": "Hernandez",
+          "role": "defender",
+          "birthDate": "1997-11-06",
+          "birthPlace": "Marseille, France",
+          "id": "THEHRN97",
+          "foto": "https://www.cricketsoccer.com/wp-content/uploads/2020/12/37204366-0-image-a-53_1608760049144-1.jpg"
+        },
+        {
+          "firstName": "Fikayo",
+          "secondName": "Tomori",
+          "role": "defender",
+          "birthDate": "1997-12-19",
+          "birthPlace": "Calgary, Canada",
+          "id": "FKYTMR97",
+          "foto": "https://wips.plug.it/cips/sport.virgilio.it/cms/2021/03/fikayo-tomori_riqcxr3pa1po16er33qo1l8ym.jpg"
+        },
+        {
+          "firstName": "Simon",
+          "secondName": "Kjaer",
+          "role": "defender",
+          "birthDate": "1989-03-26",
+          "birthPlace": "Horsens, Denmark",
+          "id": "SMNKJR89",
+          "foto": "https://cdn.calciomercato.com/images/2020-10/kjaer.milan.2020.21.protesta.1400x840.jpg"
+        },
+        {
+          "firstName": "Pierre",
+          "secondName": "Kalulu",
+          "role": "defender",
+          "birthDate": "2000-06-05",
+          "birthPlace": "Lyon, France",
+          "id": "PRRKLL00",
+          "foto": "https://www.sportellate.it/wp-content/uploads/2021/03/Kalulu-Icon_LP_11693091.jpg"
+        },
+        {
+          "firstName": "Frank",
+          "secondName": "Kessie",
+          "role": "midfielder",
+          "birthDate": "1996-12-19",
+          "birthPlace": "Ouragahio, Ivory Coast",
+          "id": "FRNKSS96",
+          "foto": "https://tuttomilan24.it/wp-content/uploads/2020/11/esult_gol_Kessie_2NC6990-min.jpg"
+        },
+        {
+          "firstName": "Ismael",
+          "secondName": "Bennacer",
+          "role": "midfielder",
+          "birthDate": "1997-12-01",
+          "birthPlace": "Arles, France",
+          "id": "SMLBNN97",
+          "foto": "https://www.milanlive.it/wp-content/uploads/2020/04/ismael-bennacer.jpg"
+        },
+        {
+          "firstName": "Ante",
+          "secondName": "Rebic",
+          "role": "forward",
+          "birthDate": "1993-09-21",
+          "birthPlace": "Split, Croatia",
+          "id": "NTARBC93",
+          "foto": "https://www.mediagol.it/wp-content/uploads/sites/27/2020/01/gettyimages-1194596165.jpg"
+        },
+        {
+          "firstName": "Hakan",
+          "secondName": "Calhanoglu",
+          "role": "midfielder",
+          "birthDate": "1984-02-08",
+          "birthPlace": "Mannheim, Germany",
+          "id": "HKNCLH84",
+          "foto": "https://www.okcalciomercato.it/wp-content/uploads/2020/11/120157635_10158482434318859_3099319713542043577_n.jpg"
+        },
+        {
+          "firstName": "Alexis",
+          "secondName": "Saelemakers",
+          "role": "midfielder",
+          "birthDate": "1999-06-27",
+          "birthPlace": "Berchem-Sainte-Agathe, Belgium",
+          "id": "LXSSLM99",
+          "foto": "https://s.hs-data.com/bilder/spieler/gross/369488.jpg"
+        },
+        {
+          "firstName": "Rafael",
+          "secondName": "Leao",
+          "role": "forward",
+          "birthDate": "1999-06-10",
+          "birthPlace": "Almada, Portugal",
+          "id": "RFLLEA99",
+          "foto": "https://i.pinimg.com/originals/1d/52/9a/1d529aaf92cd026515750cbd8f5a8fdd.jpg"
+        }
+      ]
+    }
+  ]
+}
