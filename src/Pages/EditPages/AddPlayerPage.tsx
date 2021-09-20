@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import actions from "../../Redux/actions";
+
 function AddPlayerPage() {
-  const state: any = useSelector((state) => state);
+  const { ADD_PLAYER } = actions;
+
   const dispatch = useDispatch();
-  const [team, setTeam] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [secondName, setSecondName] = useState("");
-  const [role, setRole] = useState("");
+
+  const state: any = useSelector((state) => state);
+
   const [birthDate, setBirthDate] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
-  const [pictureUrl, setPictureUrl] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [id, setId] = useState("");
+  const [pictureUrl, setPictureUrl] = useState("");
+  const [role, setRole] = useState("");
+  const [secondName, setSecondName] = useState("");
+  const [team, setTeam] = useState("");
 
   const addPlayer: any = () => {
     return {
-      type: 'ADD_PLAYER',
+      type: ADD_PLAYER,
       team: team,
       player: {
         firstName: firstName,

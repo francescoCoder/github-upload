@@ -1,11 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import {
-  HashRouter as Router,
-  Route,
-  NavLink,
-  Switch,
-} from "react-router-dom";
+import { HashRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 
 import AddPlayerPage from "./EditPages/AddPlayerPage";
 import AddTeamPage from "./EditPages/AddTeamPage";
@@ -13,15 +7,11 @@ import EditPlayerPage from "./EditPages/EditPlayerPage";
 import EditTeamPage from "./EditPages/EditTeamPage";
 import RemovePlayerPage from "./EditPages/RemovePlayerPage";
 import RemoveTeamPage from "./EditPages/RemoveTeamPage";
-import localStorage from "../localStorage";
 
 import "../index.scss";
 //-------------------------------------------------------------
 
 function EditPage() {
-  const state = useSelector((state) => state);
-  console.log(state);
-  console.log(localStorage.teams);
   return (
     <Router>
       <div className="edit-form">

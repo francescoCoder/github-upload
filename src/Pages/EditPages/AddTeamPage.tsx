@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import localStorage from "../../localStorage";
+import { useDispatch } from "react-redux";
+
+import actions from "../../Redux/actions";
 
 function AddTeamPage() {
-  const state = useSelector((state) => state);
+  const { ADD_TEAM } = actions;
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
@@ -12,38 +13,20 @@ function AddTeamPage() {
   const [secondColor, setSecondColor] = useState("");
   const [id, setId] = useState("");
 
-  const updateState: any = () => {
-    return {
-      type: "UPDATE_STATE",
-      state: JSON.parse(localStorage.teams),
-    };
-  };
-
-  const updateAll = () => {
-    localStorage.setItem("teams", JSON.stringify(state));
-    console.log(localStorage.teams);
-    dispatch(updateState());
-  };
-
   const addTeam: any = () => {
     return {
-      type: "ADD_TEAM",
+      type: ADD_TEAM,
       team: {
-        name: name,
-        city: city,
-        logo: logo,
-        firstColor: firstColor,
-        secondColor: secondColor,
-        id: id,
+        name,
+        city,
+        logo,
+        firstColor,
+        secondColor,
+        id,
         players: [],
       },
     };
   };
-
-  // const dispatchAll = () => {
-  //   dispatch(addTeam());
-  //   dispatch(updateState());
-  // };
 
   return (
     <div>
@@ -113,7 +96,6 @@ function AddTeamPage() {
           name && city && logo && firstColor && secondColor && id ? false : true
         }
         onClick={() => dispatch(addTeam())}
-        // onMouseLeave={updateAll}
       >
         Add the Team
       </button>
@@ -122,10 +104,3 @@ function AddTeamPage() {
 }
 
 export default AddTeamPage;
-
-// "city": "Turin",
-//       "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Juventus_Logo.png/1200px-Juventus_Logo.png",
-//       "firstColor": "white",
-//       "secondColor": "black",
-//       "id": "JVNTRN97",
-//       "players": [

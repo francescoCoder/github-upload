@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import actions from "../../Redux/actions";
+
 function RemoveTeamPage() {
+  const { REMOVE_TEAM } = actions;
   const state: any = useSelector((state) => state);
   const [index, setIndex] = useState("");
   const dispatch = useDispatch();
@@ -14,7 +17,7 @@ function RemoveTeamPage() {
 
   const removeTeam = () => {
     return {
-      type: "REMOVE_TEAM",
+      type: REMOVE_TEAM,
       teamIndex: index,
     };
   };

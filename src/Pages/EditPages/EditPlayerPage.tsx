@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import actions from "../../Redux/actions";
+
 function EditPlayerPage() {
+  const { EDIT_PLAYER } = actions;
   const state: any = useSelector((state) => state);
   const [team, setTeam] = useState("");
   const dispatch = useDispatch();
@@ -17,7 +20,7 @@ function EditPlayerPage() {
 
   const editPlayer = () => {
     return {
-      type: "EDIT_PLAYER",
+      type: EDIT_PLAYER,
       teamIndex,
       playerIndex,
       player: { firstName, secondName, role, birthDate, birthPlace, foto, id },
