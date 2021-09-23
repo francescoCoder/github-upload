@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import Modal from "../../Components/Modal";
 
 import actions from "../../Redux/actions";
 
 function AddTeamPage() {
   const { ADD_TEAM } = actions;
-  const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [city, setCity] = useState("");
-  const [logo, setLogo] = useState("");
-  const [firstColor, setFirstColor] = useState("");
-  const [secondColor, setSecondColor] = useState("");
-  const [id, setId] = useState("");
 
-  const addTeam: any = () => {
+  const dispatch = useDispatch();
+
+  const [city, setCity] = useState("");
+  const [firstColor, setFirstColor] = useState("");
+  const [id, setId] = useState("");
+  const [logo, setLogo] = useState("");
+  const [name, setName] = useState("");
+  const [popup, setPopup] = useState(false);
+  const [secondColor, setSecondColor] = useState("");
+
+  const addTeam = () => {
     return {
       type: ADD_TEAM,
       team: {
@@ -28,8 +32,13 @@ function AddTeamPage() {
     };
   };
 
+  const addTeamPopup = () => {
+    setPopup(true);
+    dispatch(addTeam());
+  };
+
   return (
-    <div>
+    <div className="form-fields">
       <div>
         <p>Fill the form below to add the new team</p>
         <input
@@ -92,13 +101,17 @@ function AddTeamPage() {
         <label>Id</label>
       </div>
       <button
-        disabled={
-          name && city && logo && firstColor && secondColor && id ? false : true
-        }
-        onClick={() => dispatch(addTeam())}
+        disabled={!(name && city && logo && firstColor && secondColor && id)}
+        onClick={addTeamPopup}
       >
         Add the Team
       </button>
+      {popup === true && (
+        <Modal
+          action={() => setPopup(false)}
+          message="Your team has been added"
+        />
+      )}
     </div>
   );
 }

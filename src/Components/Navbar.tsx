@@ -1,70 +1,30 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import {
-  NavLink,
-  HashRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { NavLink, HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import TeamPage from "../Pages/TeamPage";
 import EditPage from "../Pages/EditPage";
+import { TeamType } from "./interfaces";
 
 import "../index.scss";
 //--------------------------------------------
 
 function Navbar() {
-  const state: any = useSelector((state) => state);
+  const state = useSelector((state: TeamType[]) => state);
 
   return (
     <Router>
       <div className="head-nav">
-        <NavLink
-          to="/"
-          exact
-          style={{
-            textDecoration: "none",
-            color: "black",
-            alignItems: "end",
-
-          }}
-          activeStyle={{
-            fontWeight: "bold",
-            fontSize: "20px",
-          }}
-        >
+        <NavLink to="/" exact className="navbar-link">
           <li>Home</li>
         </NavLink>
 
-        {state.map((item: any) => (
-          <NavLink
-            to={`/${item.id}`}
-            key={item.id}
-            style={{
-              textDecoration: "none",
-              color: "black",
-        
-            }}
-            activeStyle={{
-              fontWeight: "bold",
-              fontSize: "20px",
-            }}
-          >
-            <li>{item.name}</li>
+        {state.map((team: TeamType) => (
+          <NavLink to={`/${team.id}`} className="navbar-link" key={team.id}>
+            <li>{team.name}</li>
           </NavLink>
         ))}
-        <NavLink
-          to="/options"
-          style={{
-            textDecoration: "none",
-            color: "black",
-
-          }}
-          activeStyle={{
-            fontWeight: "bold",
-            fontSize: "20px",
-          }}
-        >
+        <NavLink to="/options" className="navbar-link">
           <li>Options</li>
         </NavLink>
       </div>

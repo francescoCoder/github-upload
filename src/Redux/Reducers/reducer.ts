@@ -1,14 +1,15 @@
+import { AnyAction } from "redux";
+import { PlayerType, TeamType } from "../../Components/interfaces";
 import localStorage from "../../localStorage";
-
 
 export default function reducer(
   state = JSON.parse(localStorage.teams),
-  action: any
+  action: AnyAction
 ) {
   switch (action.type) {
-    case 'ADD_PLAYER': {
+    case "ADD_PLAYER": {
       const teamIndex = state.findIndex(
-        (team: any) => team.name === action.team
+        (team: TeamType) => team.name === action.team
       );
       const newState = [...state];
       newState[teamIndex].players.push(action.player);
@@ -17,10 +18,10 @@ export default function reducer(
     }
     case "REMOVE_PLAYER": {
       const teamIndex = state.findIndex(
-        (team: any) => team.name === action.team
+        (team: TeamType) => team.name === action.team
       );
       const playerIndex = state[teamIndex].players.findIndex(
-        (player: any) => player.id === action.id
+        (player: PlayerType) => player.id === action.id
       );
       const newPlayersArr = state[teamIndex].players
         .slice(0, playerIndex)

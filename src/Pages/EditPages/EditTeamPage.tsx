@@ -1,29 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NullInitState, TeamType } from "../../Components/interfaces";
+import Modal from "../../Components/Modal";
 
 import actions from "../../Redux/actions";
 
 function EditTeamPage() {
   const { EDIT_TEAM } = actions;
-  const state: any = useSelector((state) => state);
+
   const dispatch = useDispatch();
-  const [team, setTeam] = useState("");
-  const [teamIndex, setTeamIndex] = useState(-1);
-  const [name, setName] = useState("");
+
+  const state = useSelector((state: TeamType[]) => state);
+
   const [city, setCity] = useState("");
-  const [logo, setLogo] = useState("");
   const [firstColor, setFirstColor] = useState("");
-  const [secondColor, setSecondColor] = useState("");
   const [id, setId] = useState("");
+  const [logo, setLogo] = useState("");
+  const [name, setName] = useState("");
+  const [popup, setPopup] = useState(false);
+  const [secondColor, setSecondColor] = useState("");
+  const [team, setTeam] = useState("");
+  const [teamIndex, setTeamIndex] = useState<NullInitState>(null);
 
   useEffect(
     () =>
-      setTeamIndex(state.findIndex((element: any) => element.name === team)),
+      setTeamIndex(state.findIndex((eqipe: TeamType) => eqipe.name === team)),
     [state, team]
   );
 
   const setProps = () => {
-    if (teamIndex > -1) {
+    if (teamIndex !== null && state[teamIndex] !== undefined) {
       let equipe = state[teamIndex];
       setName(equipe.name);
       setCity(equipe.city);
@@ -35,7 +41,7 @@ function EditTeamPage() {
   };
 
   const setNewPlayersArr = () => {
-    return state[teamIndex].players;
+    return teamIndex !== null && state[teamIndex].players;
   };
 
   useEffect(setProps, [state, teamIndex]);
@@ -55,24 +61,34 @@ function EditTeamPage() {
       },
     };
   };
+  const editTeamPopup = () => {
+    setPopup(true);
+    dispatch(editTeam());
+  };
 
   return (
-    <div>
+    <div className="form-fields">
       <div>
         <p>Select the team to edit</p>
-        {state.map((equipe: any) => (
-          <div key={equipe.name}>
-            <input
-              onChange={(e) => setTeam(e.target.defaultValue)}
-              type="radio"
-              value={equipe.name}
-              name="team"
-            />
-            <label>{equipe.name}</label>
-          </div>
-        ))}
+        {state.length > 0 ? (
+          state.map((equipe: TeamType) => (
+            <div key={equipe.name}>
+              <input
+                onChange={(e) => setTeam(e.target.defaultValue)}
+                type="radio"
+                value={equipe.name}
+                name="team"
+              />
+              <label>{equipe.name}</label>
+            </div>
+          ))
+        ) : (
+          <p className="alert">
+            No teams to edit at the moment. Try adding a new one
+          </p>
+        )}
       </div>
-      {teamIndex > -1 && (
+      {teamIndex !== null && (
         <div>
           <div>
             <input
@@ -133,15 +149,19 @@ function EditTeamPage() {
       <div>
         <button
           disabled={
-            team && name && city && logo && firstColor && secondColor && id
-              ? false
-              : true
+            !(team && name && city && logo && firstColor && secondColor && id)
           }
-          onClick={() => dispatch(editTeam())}
+          onClick={editTeamPopup}
         >
           Apply the changes
         </button>
       </div>
+      {popup === true && (
+        <Modal
+          action={() => setPopup(false)}
+          message="The edit has been uploaded"
+        />
+      )}
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { TeamType } from "../../Components/interfaces";
+import Modal from "../../Components/Modal";
 
 import actions from "../../Redux/actions";
 
@@ -8,53 +10,58 @@ function AddPlayerPage() {
 
   const dispatch = useDispatch();
 
-  const state: any = useSelector((state) => state);
+  const state = useSelector((state: TeamType[]) => state);
 
   const [birthDate, setBirthDate] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
   const [firstName, setFirstName] = useState("");
   const [id, setId] = useState("");
-  const [pictureUrl, setPictureUrl] = useState("");
+  const [foto, setFoto] = useState("");
+  const [popup, setPopup] = useState(false);
   const [role, setRole] = useState("");
   const [secondName, setSecondName] = useState("");
   const [team, setTeam] = useState("");
 
-  const addPlayer: any = () => {
+  const addPlayer = () => {
     return {
       type: ADD_PLAYER,
-      team: team,
+      team,
       player: {
-        firstName: firstName,
-        secondName: secondName,
-        role: role,
-        birthDate: birthDate,
-        birthPlace: birthPlace,
-        id: id,
-        foto: pictureUrl,
+        firstName,
+        secondName,
+        role,
+        birthDate,
+        birthPlace,
+        id,
+        foto,
       },
     };
   };
 
-  // const passDataToStateAndLocalStorage = () => {
-  //   dispatch(addPlayer());
-  //   localStorage.setItem("teams", JSON.stringify(state));
-  // };
+  const addPlayerPopup = () => {
+    setPopup(true);
+    dispatch(addPlayer());
+  };
 
   return (
-    <div>
+    <div className="form-fields">
       <div>
         <p>Select the team</p>
-        {state.map((equipe: any) => (
-          <div key={equipe.name}>
-            <input
-              onChange={(e) => setTeam(e.target.defaultValue)}
-              type="radio"
-              value={equipe.name}
-              name="team"
-            />
-            <label>{equipe.name}</label>
-          </div>
-        ))}
+        {state.length > 0 ? (
+          state.map((equipe: TeamType) => (
+            <div key={equipe.name}>
+              <input
+                onChange={(e) => setTeam(e.target.defaultValue)}
+                type="radio"
+                value={equipe.name}
+                name="team"
+              />
+              <label>{equipe.name}</label>
+            </div>
+          ))
+        ) : (
+          <p className="alert">You need to add a team first!</p>
+        )}
       </div>
       <div>
         <input
@@ -120,7 +127,7 @@ function AddPlayerPage() {
         <input
           type="text"
           placeholder="insert here the picture URL"
-          onChange={(e) => setPictureUrl(e.target.value)}
+          onChange={(e) => setFoto(e.target.value)}
         />
         <label>Picture URL</label>
       </div>
@@ -130,25 +137,32 @@ function AddPlayerPage() {
           placeholder="insert here the player's id"
           onChange={(e) => setId(e.target.value)}
         />
+        <label>ID</label>
       </div>
 
       <button
         disabled={
-          team &&
-          firstName &&
-          secondName &&
-          role &&
-          birthDate &&
-          birthPlace &&
-          pictureUrl &&
-          id
-            ? false
-            : true
+          !(
+            team &&
+            firstName &&
+            secondName &&
+            role &&
+            birthDate &&
+            birthPlace &&
+            foto &&
+            id
+          )
         }
-        onClick={() => dispatch(addPlayer())}
+        onClick={addPlayerPopup}
       >
         Add the Player
       </button>
+      {popup === true && (
+        <Modal
+          action={() => setPopup(false)}
+          message="Your player has been added"
+        />
+      )}
     </div>
   );
 }

@@ -15,26 +15,12 @@ function EditPage() {
   return (
     <Router>
       <div className="edit-form">
-        <p className="incipit-question">Hi! What would you like to do now?</p>
-        <div>
-          <NavLink
-            to="/options/add-player"
-            activeStyle={{ color: "red" }}
-            style={{
-              textDecoration: "none",
-              color: "black",
-            }}
-          >
+        <div className="edit-column">
+          <p className="incipit-question">Hi! What would you like to do now?</p>
+          <NavLink to="/options/add-player" className="edit-option">
             <li> Add a player</li>
           </NavLink>
-          <NavLink
-            to="/options/remove-player"
-            activeStyle={{ color: "red" }}
-            style={{
-              textDecoration: "none",
-              color: "black",
-            }}
-          >
+          <NavLink to="/options/remove-player" className="edit-option">
             <li>Remove a player</li>
           </NavLink>
 
@@ -48,46 +34,25 @@ function EditPage() {
           >
             <li>Add a Team</li>
           </NavLink>
-          <NavLink
-            to="/options/remove-team"
-            activeStyle={{ color: "red" }}
-            style={{
-              textDecoration: "none",
-              color: "black",
-            }}
-          >
+          <NavLink to="/options/remove-team" className="edit-option">
             <li> Remove a team </li>
           </NavLink>
-          <NavLink
-            to="/options/edit-team"
-            activeStyle={{ color: "red" }}
-            style={{
-              textDecoration: "none",
-              color: "black",
-            }}
-          >
+          <NavLink to="/options/edit-team" className="edit-option">
             <li> Edit a team</li>
           </NavLink>
-          <NavLink
-            to="/options/edit-player"
-            activeStyle={{ color: "red" }}
-            style={{
-              textDecoration: "none",
-              color: "black",
-            }}
-          >
+          <NavLink to="/options/edit-player" className="edit-option">
             <li>Edit a player</li>
           </NavLink>
         </div>
+        <Switch>
+          <Route path="/options/add-player" component={AddPlayerPage} />
+          <Route path="/options/remove-player" component={RemovePlayerPage} />
+          <Route path="/options/add-team" component={AddTeamPage} />
+          <Route path="/options/remove-team" component={RemoveTeamPage} />
+          <Route path="/options/edit-team" component={EditTeamPage} />
+          <Route path="/options/edit-player" component={EditPlayerPage} />
+        </Switch>
       </div>
-      <Switch>
-        <Route path="/options/add-player" component={AddPlayerPage} />
-        <Route path="/options/remove-player" component={RemovePlayerPage} />
-        <Route path="/options/add-team" component={AddTeamPage} />
-        <Route path="/options/remove-team" component={RemoveTeamPage} />
-        <Route path="/options/edit-team" component={EditTeamPage} />
-        <Route path="/options/edit-player" component={EditPlayerPage} />
-      </Switch>
     </Router>
   );
 }

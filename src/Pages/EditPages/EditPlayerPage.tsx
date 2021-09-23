@@ -2,21 +2,31 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import actions from "../../Redux/actions";
+import {
+  NullInitState,
+  PlayerType,
+  TeamType,
+} from "../../Components/interfaces";
+import Modal from "../../Components/Modal";
 
 function EditPlayerPage() {
   const { EDIT_PLAYER } = actions;
-  const state: any = useSelector((state) => state);
-  const [team, setTeam] = useState("");
+
   const dispatch = useDispatch();
-  const [teamIndex, setTeamIndex] = useState(-1);
-  const [playerIndex, setPlayerIndex] = useState(-1);
-  const [firstName, setFirstName] = useState("");
-  const [secondName, setSecondName] = useState("");
-  const [role, setRole] = useState("");
+
+  const state = useSelector((state: TeamType[]) => state);
+
   const [birthDate, setBirthDate] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [foto, setFoto] = useState("");
   const [id, setId] = useState("");
+  const [playerIndex, setPlayerIndex] = useState<NullInitState>(null);
+  const [popup, setPopup] = useState(false);
+  const [role, setRole] = useState("");
+  const [secondName, setSecondName] = useState("");
+  const [team, setTeam] = useState("");
+  const [teamIndex, setTeamIndex] = useState<NullInitState>(null);
 
   const editPlayer = () => {
     return {
@@ -27,26 +37,35 @@ function EditPlayerPage() {
     };
   };
 
+  const editPlayerPopup = () => {
+    setPopup(true);
+    dispatch(editPlayer());
+  };
+
   useEffect(
     () =>
-      setTeamIndex(state.findIndex((element: any) => element.name === team)),
+      setTeamIndex(state.findIndex((equipe: TeamType) => equipe.name === team)),
     [state, team]
   );
 
   useEffect(
     () =>
       setPlayerIndex(
-        teamIndex !== -1
+        teamIndex !== null && state[teamIndex]
           ? state[teamIndex].players.findIndex(
-              (element: any) => element.id === id
+              (player: PlayerType) => player.id === id
             )
-          : -1
+          : null
       ),
     [id, state, teamIndex]
   );
 
   const setProps = () => {
-    if (teamIndex > -1 && playerIndex > -1) {
+    if (
+      teamIndex !== null &&
+      playerIndex !== null &&
+      state[teamIndex].players[playerIndex]
+    ) {
       let player = state[teamIndex].players[playerIndex];
       setFirstName(player.firstName);
       setSecondName(player.secondName);
@@ -60,9 +79,9 @@ function EditPlayerPage() {
 
   useEffect(setProps, [playerIndex, state, teamIndex]);
   return (
-    <div>
+    <div className="form-fields">
       <p>Select the team:</p>
-      {state.map((equipe: any) => (
+      {state.map((equipe: TeamType) => (
         <div key={equipe.name}>
           <input
             onChange={(e) => setTeam(e.target.defaultValue)}
@@ -73,9 +92,10 @@ function EditPlayerPage() {
           <label>{equipe.name}</label>
         </div>
       ))}
-      {teamIndex > -1 && <p>Now select the right player:</p>}
-      {teamIndex >= 0 &&
-        state[teamIndex].players.map((player: any) => (
+      {teamIndex !== null && <p>Now select the right player:</p>}
+      {teamIndex !== null &&
+        state[teamIndex] !== undefined &&
+        state[teamIndex].players.map((player: PlayerType) => (
           <div key={player.id}>
             <input
               onChange={(e) => setId(e.target.defaultValue)}
@@ -86,7 +106,7 @@ function EditPlayerPage() {
             <label>{`${player.firstName} ${player.secondName}`}</label>
           </div>
         ))}
-      {playerIndex > -1 && (
+      {playerIndex !== null && (
         <div>
           <div>
             <input
@@ -174,22 +194,28 @@ function EditPlayerPage() {
           </div>
           <button
             disabled={
-              team &&
-              firstName &&
-              secondName &&
-              role &&
-              birthDate &&
-              birthPlace &&
-              foto &&
-              id
-                ? false
-                : true
+              !(
+                team &&
+                firstName &&
+                secondName &&
+                role &&
+                birthDate &&
+                birthPlace &&
+                foto &&
+                id
+              )
             }
-            onClick={() => dispatch(editPlayer())}
+            onClick={editPlayerPopup}
           >
             Apply the changes
           </button>
         </div>
+      )}
+      {popup === true && (
+        <Modal
+          action={() => setPopup(false)}
+          message="The edit has been uploaded"
+        />
       )}
     </div>
   );

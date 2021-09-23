@@ -1,22 +1,28 @@
 import React, { createContext, useState } from "react";
 import { useSelector } from "react-redux";
-import { HashRouter as Router, Link, Route, Switch } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Link,
+  Route,
+  Switch,
+  RouteComponentProps,
+} from "react-router-dom";
 
 import PlayerPage from "./PlayerPage";
+import { PlayerType, TeamType, TeamParams } from "../Components/interfaces";
 
 import "../index.scss";
 //-------------------------------------------------------------
 
-
 export const ToggledPlayersContext = createContext({});
 //---------------------------------------------
 
-function TeamPage(props: any) {
-  const state: any = useSelector((state) => state);
-  const teamId = props.match.params.idTeam;
-  const team = state.find((equipe: any) => equipe.id === teamId);
-  const players = team.players;
-  const teamName = team.name;
+function TeamPage({ match }: RouteComponentProps<TeamParams>) {
+  const state = useSelector((state: TeamType[]) => state);
+  const teamId = match.params.idTeam;
+  const team = state.find((equipe: TeamType) => equipe.id === teamId);
+  const players = team && team.players;
+  const teamName = team && team.name;
 
   const [isPlayersToggled, setIsPlayersToggled] = useState(false);
   return (
@@ -31,41 +37,43 @@ function TeamPage(props: any) {
           <div className="color-stripes">
             <div
               className="left"
-              style={{ backgroundColor: team.firstColor }}
+              style={{ backgroundColor: team && team.firstColor }}
             />
             <div
               className="right"
-              style={{ backgroundColor: team.secondColor }}
+              style={{ backgroundColor: team && team.secondColor }}
             />
           </div>
           <div className="team-logo">
-            <img src={team.logo} alt="the team logo" />
+            <img src={team && team.logo} alt="the team logo" />
           </div>
           <div>
             <h2 className="team-name">{teamName}</h2>
             <ul className="players-list">
               <strong>Players:</strong>
               <p></p>
-              {players.map((player: any) => (
-                <Link
-                  to={`/${teamId}/${player.id}`}
-                  key={player.id}
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                  }}
-                  onClick={() => setIsPlayersToggled(true)}
-                >
-                  <li>{`${player.firstName} ${player.secondName}`}</li>
-                </Link>
-              ))}
+              {players &&
+                players.map((player: PlayerType) => (
+                  <Link
+                    to={`/${teamId}/${player.id}`}
+                    key={player.id}
+                    style={{
+                      textDecoration: "none",
+                      color: "black",
+                    }}
+                    onClick={() => setIsPlayersToggled(true)}
+                  >
+                    <li>{`${player.firstName} ${player.secondName}`}</li>
+                  </Link>
+                ))}
             </ul>
           </div>
           <div className="color-stripes">
-            <div style={{ backgroundColor: team.firstColor }} />
-            <div style={{ backgroundColor: team.secondColor }} />
+            <div style={{ backgroundColor: team && team.firstColor }} />
+            <div style={{ backgroundColor: team && team.secondColor }} />
           </div>
         </div>
+
         <Switch>
           <Route path={`/:teamId/:playerId`} component={PlayerPage}></Route>
         </Switch>

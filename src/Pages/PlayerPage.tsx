@@ -1,23 +1,28 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
-import { HashRouter as Router, Link } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Link,
+  RouteComponentProps,
+} from "react-router-dom";
 
 import { ToggledPlayersContext } from "./TeamPage";
+import { PlayerParams, PlayerType, TeamType } from "../Components/interfaces";
 
 import "../index.scss";
 //-------------------------------------------------------------
 
-function PlayerPage(props: any) {
-  const state: any = useSelector((state) => state);
-  const player = props.match.params.playerId; //selected player's id
-  const team = props.match.params.teamId; //selected team id
+function PlayerPage({ match }: RouteComponentProps<PlayerParams>) {
+  const state: any = useSelector((state: TeamType[]) => state);
+  const Context: any = useContext(ToggledPlayersContext);
+  const team = match.params.teamId; //selected team id
+  const player = match.params.playerId; //selected player's id
   const teamPlayersArr = state.find(
-    (equipe: any) => equipe.id === team
+    (equipe: TeamType) => equipe.id === team
   ).players; //selected team array
   const playerArr = teamPlayersArr.find(
-    (teammate: any) => teammate.id === player
+    (teammate: PlayerType) => teammate.id === player
   ); //selected player's array
-  const Context: any = useContext(ToggledPlayersContext);
 
   //----------------RETURN--------------------
 
