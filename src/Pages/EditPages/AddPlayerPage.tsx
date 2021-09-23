@@ -63,7 +63,7 @@ function AddPlayerPage() {
           <p className="alert">You need to add a team first!</p>
         )}
       </div>
-      <div>
+      <div className="input-and-label">
         <input
           type="text"
           placeholder="insert here the first name"
@@ -72,7 +72,7 @@ function AddPlayerPage() {
         />
         <label>First name</label>
       </div>
-      <div>
+      <div className="input-and-label">
         <input
           type="text"
           placeholder="insert here the second name"
@@ -81,41 +81,53 @@ function AddPlayerPage() {
         />
         <label>Second name</label>
       </div>
-      <div>
-        <input
-          type="radio"
-          value="forward"
-          name="role"
-          onChange={(e) => setRole(e.target.defaultValue)}
-        />{" "}
-        Forward
-        <input
-          type="radio"
-          value="goalkeeper"
-          name="role"
-          onChange={(e) => setRole(e.target.defaultValue)}
-        />{" "}
-        Goalkeeper
-        <input
-          type="radio"
-          value="defender"
-          name="role"
-          onChange={(e) => setRole(e.target.defaultValue)}
-        />{" "}
-        Defender
-        <input
-          type="radio"
-          value="midfielder"
-          name="role"
-          onChange={(e) => setRole(e.target.defaultValue)}
-        />{" "}
-        Midfielder
+      <div className="main-role-list">
+        <div className="role-list">
+          <span className="role-item">
+            <input
+              type="radio"
+              value="forward"
+              name="role"
+              onChange={(e) => setRole(e.target.defaultValue)}
+            />{" "}
+            Forward
+          </span>
+          <span className="role-item">
+            <input
+              type="radio"
+              value="goalkeeper"
+              name="role"
+              onChange={(e) => setRole(e.target.defaultValue)}
+            />{" "}
+            Goalkeeper
+          </span>
+        </div>
+        <div className="role-list">
+          <span className="role-item">
+            <input
+              type="radio"
+              value="defender"
+              name="role"
+              onChange={(e) => setRole(e.target.defaultValue)}
+            />{" "}
+            Defender
+          </span>
+          <span className="role-item">
+            <input
+              type="radio"
+              value="midfielder"
+              name="role"
+              onChange={(e) => setRole(e.target.defaultValue)}
+            />{" "}
+            Midfielder
+          </span>
+        </div>
       </div>
-      <div>
+      <div className="input-and-label">
         <input type="date" onChange={(e) => setBirthDate(e.target.value)} />
         <label>Birthdate</label>
       </div>
-      <div>
+      <div className="input-and-label">
         <input
           type="text"
           placeholder="insert here the place of birth"
@@ -123,7 +135,7 @@ function AddPlayerPage() {
         />
         <label>Birthplace format {"=>"} City, Country</label>
       </div>
-      <div>
+      <div className="input-and-label">
         <input
           type="text"
           placeholder="insert here the picture URL"
@@ -131,7 +143,7 @@ function AddPlayerPage() {
         />
         <label>Picture URL</label>
       </div>
-      <div>
+      <div className="input-and-label">
         <input
           type="text"
           placeholder="insert here the player's id"

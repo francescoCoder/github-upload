@@ -41,16 +41,18 @@ function AddTeamPage() {
     <div className="form-fields">
       <div>
         <p>Fill the form below to add the new team</p>
-        <input
-          className="set-name"
-          type="text"
-          placeholder="insert here the name of the team"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-        />
-        <label>Team name</label>
+        <div className="input-and-label">
+          <input
+            className="set-name"
+            type="text"
+            placeholder="insert here the name of the team"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+          <label>Team name</label>
+        </div>
       </div>
-      <div>
+      <div className="input-and-label">
         <input
           className="set-city"
           type="text"
@@ -60,7 +62,7 @@ function AddTeamPage() {
         />
         <label>City</label>
       </div>
-      <div>
+      <div className="input-and-label">
         <input
           className="set-logo"
           type="text"
@@ -70,7 +72,7 @@ function AddTeamPage() {
         />
         <label>Logo</label>
       </div>
-      <div>
+      <div className="input-and-label">
         <input
           className="set-first"
           type="text"
@@ -80,7 +82,7 @@ function AddTeamPage() {
         />
         <label>First color</label>
       </div>
-      <div>
+      <div className="input-and-label">
         <input
           className="set-second"
           type="text"
@@ -90,7 +92,7 @@ function AddTeamPage() {
         />
         <label>Second color</label>
       </div>
-      <div>
+      <div className="input-and-label">
         <input
           className="set-id"
           type="text"

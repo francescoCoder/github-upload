@@ -108,7 +108,7 @@ function EditPlayerPage() {
         ))}
       {playerIndex !== null && (
         <div>
-          <div>
+          <div className="input-and-label">
             <input
               type="text"
               value={firstName}
@@ -116,7 +116,7 @@ function EditPlayerPage() {
             />
             <label>Modify first name</label>
           </div>
-          <div>
+          <div className="input-and-label">
             <input
               type="text"
               value={secondName}
@@ -124,42 +124,54 @@ function EditPlayerPage() {
             />
             <label>Modify second name</label>
           </div>
+          <div className="main-role-list">
+            <div className="role-list">
+              <span className="role-item">
+                <input
+                  type="radio"
+                  value="forward"
+                  name="role"
+                  checked={role === "forward" ? true : false}
+                  onChange={(e) => setRole(e.target.defaultValue)}
+                />{" "}
+                Forward
+              </span>
 
-          <div>
-            <input
-              type="radio"
-              value="forward"
-              name="role"
-              checked={role === "forward" ? true : false}
-              onChange={(e) => setRole(e.target.defaultValue)}
-            />{" "}
-            Forward
-            <input
-              type="radio"
-              value="goalkeeper"
-              name="role"
-              checked={role === "goalkeeper" ? true : false}
-              onChange={(e) => setRole(e.target.defaultValue)}
-            />{" "}
-            Goalkeeper
-            <input
-              type="radio"
-              value="defender"
-              name="role"
-              checked={role === "defender" ? true : false}
-              onChange={(e) => setRole(e.target.defaultValue)}
-            />{" "}
-            Defender
-            <input
-              type="radio"
-              value="midfielder"
-              name="role"
-              checked={role === "midfielder" ? true : false}
-              onChange={(e) => setRole(e.target.defaultValue)}
-            />{" "}
-            Midfielder
+              <span className="role-item">
+                <input
+                  type="radio"
+                  value="goalkeeper"
+                  name="role"
+                  checked={role === "goalkeeper" ? true : false}
+                  onChange={(e) => setRole(e.target.defaultValue)}
+                />{" "}
+                Goalkeeper
+              </span>
+            </div>
+            <div className="role-list">
+              <span className="role-item">
+                <input
+                  type="radio"
+                  value="defender"
+                  name="role"
+                  checked={role === "defender" ? true : false}
+                  onChange={(e) => setRole(e.target.defaultValue)}
+                />{" "}
+                Defender
+              </span>
+              <span className="role-item">
+                <input
+                  type="radio"
+                  value="midfielder"
+                  name="role"
+                  checked={role === "midfielder" ? true : false}
+                  onChange={(e) => setRole(e.target.defaultValue)}
+                />{" "}
+                Midfielder
+              </span>
+            </div>
           </div>
-          <div>
+          <div className="input-and-label">
             <input
               type="date"
               value={birthDate}
@@ -167,7 +179,7 @@ function EditPlayerPage() {
             />
             <label>Modify the date of birth</label>
           </div>
-          <div>
+          <div className="input-and-label">
             <input
               type="text"
               value={birthPlace}
@@ -176,7 +188,7 @@ function EditPlayerPage() {
             <label>Modify birth place (format {"=>"} City, Country)</label>
           </div>
 
-          <div>
+          <div className="input-and-label">
             <input
               type="text"
               value={id}
@@ -184,7 +196,7 @@ function EditPlayerPage() {
             />
             <label>Modify id</label>
           </div>
-          <div>
+          <div className="input-and-label">
             <input
               type="text"
               value={foto}

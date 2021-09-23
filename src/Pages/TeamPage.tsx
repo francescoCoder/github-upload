@@ -52,20 +52,22 @@ function TeamPage({ match }: RouteComponentProps<TeamParams>) {
             <ul className="players-list">
               <strong>Players:</strong>
               <p></p>
-              {players &&
-                players.map((player: PlayerType) => (
-                  <Link
-                    to={`/${teamId}/${player.id}`}
-                    key={player.id}
-                    style={{
-                      textDecoration: "none",
-                      color: "black",
-                    }}
-                    onClick={() => setIsPlayersToggled(true)}
-                  >
-                    <li>{`${player.firstName} ${player.secondName}`}</li>
-                  </Link>
-                ))}
+              <div className="list-players">
+                {players &&
+                  players.map((player: PlayerType) => (
+                    <Link
+                      to={`/${teamId}/${player.id}`}
+                      key={player.id}
+                      style={{
+                        textDecoration: "none",
+                        color: "black",
+                      }}
+                      onClick={() => setIsPlayersToggled(true)}
+                    >
+                      <li>{`${player.firstName} ${player.secondName}`}</li>
+                    </Link>
+                  ))}
+              </div>
             </ul>
           </div>
           <div className="color-stripes">
