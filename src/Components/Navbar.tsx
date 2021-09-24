@@ -24,14 +24,14 @@ function Navbar() {
         >
           <li className="navli">Home</li>
         </NavLink>
-        <div className="dropdown">
-          <li className={teamSelected ? "navli active" : "navli"}>Teams</li>
+        <div className={teamSelected ? "dropdown active" : "dropdown"}>
+          <li className="navli">Teams</li>
           <div className="dropdown-content">
             {state.map((team: TeamType) => (
               <NavLink
                 to={`/${team.id}`}
                 onClick={() => setTeamSelected(true)}
-                className="navbar-link"
+                className="navbar-link teams"
                 key={team.id}
               >
                 <li className="navli">{team.name}</li>
