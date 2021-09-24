@@ -56,6 +56,7 @@ function TeamPage({ match }: RouteComponentProps<TeamParams>) {
                 {players &&
                   players.map((player: PlayerType) => (
                     <Link
+                      className="player-name"
                       to={`/${teamId}/${player.id}`}
                       key={player.id}
                       style={{
@@ -64,7 +65,7 @@ function TeamPage({ match }: RouteComponentProps<TeamParams>) {
                       }}
                       onClick={() => setIsPlayersToggled(true)}
                     >
-                      <li>{`${player.firstName} ${player.secondName}`}</li>
+                      <li className="player-name">{`${player.firstName} ${player.secondName}`}</li>
                     </Link>
                   ))}
               </div>
