@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, HashRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -11,21 +11,41 @@ import "../index.scss";
 
 function Navbar() {
   const state = useSelector((state: TeamType[]) => state);
+  const [teamSelected, setTeamSelected] = useState(false);
 
   return (
     <Router>
       <div className="head-nav">
-        <NavLink to="/" exact className="navbar-link">
-          <li>Home</li>
+        <NavLink
+          to="/"
+          exact
+          className="navbar-link"
+          onClick={() => setTeamSelected(false)}
+        >
+          <li className="navli">Home</li>
         </NavLink>
+        <div className="dropdown">
+          <li className={teamSelected ? "navli active" : "navli"}>Teams</li>
+          <div className="dropdown-content">
+            {state.map((team: TeamType) => (
+              <NavLink
+                to={`/${team.id}`}
+                onClick={() => setTeamSelected(true)}
+                className="navbar-link"
+                key={team.id}
+              >
+                <li className="navli">{team.name}</li>
+              </NavLink>
+            ))}
+          </div>
+        </div>
 
-        {state.map((team: TeamType) => (
-          <NavLink to={`/${team.id}`} className="navbar-link" key={team.id}>
-            <li>{team.name}</li>
-          </NavLink>
-        ))}
-        <NavLink to="/options" className="navbar-link">
-          <li>Options</li>
+        <NavLink
+          to="/options"
+          className="navbar-link"
+          onClick={() => setTeamSelected(false)}
+        >
+          <li className="navli">Options</li>
         </NavLink>
       </div>
       <Switch>
