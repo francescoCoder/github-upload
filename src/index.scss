@@ -2,24 +2,16 @@ $underline-params: 2px solid black;
 $background-color: rgb(240, 234, 188);
 $hover-color: rgb(161, 161, 73);
 
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  max-height: 20%;
+body {
+  background-color: $background-color;
 }
 
-.head-nav {
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  margin-bottom: 80px;
-  width: 100%;
-  height: 40px;
-  overflow: visible;
-  white-space: nowrap;
-  justify-content: space-around;
+input[type="date"] {
+  height: 15px;
+}
+
+input[type="text"] {
+  height: 15px;
 }
 
 li {
@@ -27,43 +19,10 @@ li {
     border-bottom: $underline-params;
   }
 }
+// -------------CLASSES---------------------
 
-input[type="text"] {
-  height: 15px;
-}
-
-input[type="date"] {
-  height: 15px;
-}
-
-.players-list {
-  list-style: none;
-}
-
-.player-card {
-  position: fixed;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: $background-color;
-  img {
-    margin: 20px 10% 20px 10%;
-    max-width: 80%;
-    max-height: 60%;
-  }
-  h3,
-  h5 {
-    margin-left: 10%;
-    color: red;
-  }
-
-  h5 {
-    font-size: 15px;
-  }
-}
-
-body {
-  background-color: $background-color;
+.alert {
+  color: red;
 }
 
 .color-stripes {
@@ -94,85 +53,6 @@ body {
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
     rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
     rgba(0, 0, 0, 0.07) 0px 16px 16px;
-}
-
-.team-logo {
-  width: 40%;
-  img {
-    max-width: 80%;
-    padding: 30px;
-    max-height: 50%;
-  }
-}
-
-.edit-form {
-  list-style: none;
-}
-
-.player-name {
-  &:hover {
-    color: $hover-color;
-  }
-}
-
-.navbar-link {
-  text-decoration: none;
-  color: black;
-  align-items: flex-end;
-  width: 33%;
-  &.active {
-    border-bottom: $underline-params;
-  }
-}
-
-.edit-option {
-  text-decoration: none;
-  color: black;
-  &.active {
-    text-decoration: underline;
-  }
-}
-
-.alert {
-  color: red;
-}
-
-.modal-overlay {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(59, 25, 25, 0.384);
-  top: 0px;
-  left: 0px;
-}
-
-.modal-box {
-  margin: 25% 25% 25% 25%;
-  padding: 20px;
-  background-color: $background-color;
-  max-width: 50%;
-  min-height: 20%;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.edit-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  max-height: 30%;
-}
-.form-fields {
-  width: 40%;
-  margin-bottom: 40px;
-}
-.main-role-list {
-  display: flex;
-  flex-direction: row;
 }
 
 .dropdown {
@@ -212,55 +92,180 @@ body {
   display: block;
 }
 
-//-------------
+.edit-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style: none;
+  max-height: 30%;
+  width: 100%;
+}
+.edit-option {
+  color: black;
+  text-decoration: none;
+  &.active {
+    text-decoration: underline;
+  }
+}
+
+.form-fields {
+  margin-bottom: 40px;
+  width: 40%;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  max-height: 20%;
+}
+
+.head-nav {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  justify-content: space-around;
+  list-style: none;
+  margin-bottom: 80px;
+  overflow: visible;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.main-role-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.modal-box {
+  align-items: center;
+  background-color: $background-color;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 25% 25% 25% 25%;
+  max-width: 50%;
+  min-height: 20%;
+  padding: 20px;
+}
+
+.modal-overlay {
+  background-color: rgba(59, 25, 25, 0.384);
+  height: 100%;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+.navbar-link {
+  align-items: flex-end;
+  color: black;
+  text-decoration: none;
+  width: 33%;
+  &.active {
+    border-bottom: $underline-params;
+  }
+}
+
+.player-card {
+  background-color: $background-color;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+
+  img {
+    margin: 20px 10% 20px 10%;
+    max-height: 60%;
+    max-width: 80%;
+  }
+
+  h3,
+  h5 {
+    margin-left: 10%;
+  }
+
+  h5 {
+    font-size: 15px;
+  }
+}
+
+.players-list {
+  list-style: none;
+}
+
+.player-name {
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+.team-logo {
+  width: 40%;
+  img {
+    max-height: 50%;
+    max-width: 80%;
+    padding: 30px;
+  }
+}
+
+//---------MEDIA-QUERIES-----------------------------
 
 @media only screen and (max-width: 600px) {
-  .edit-form {
-    flex-direction: column;
-    align-items: flex-start;
+  label {
+    margin-right: 10px;
+    text-align: right;
   }
+
+  .container {
+    max-height: 330px;
+  }
+
+  .edit-form {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .edit-column {
+    align-items: center;
     display: flex;
     flex-direction: column;
     width: 100%;
-    align-items: center;
   }
 
   .form-fields {
     width: 85%;
   }
-  .container {
-    max-height: 330px;
-  }
-  .list-players {
-    overflow-y: scroll;
-    max-height: 220px;
-  }
-  .modal-overlay {
-    position: fixed;
-  }
-  .team-name {
-    margin-left: 20px;
-  }
+
   .input-and-label {
     display: flex;
     justify-content: space-between;
   }
-  label {
-    margin-right: 10px;
-    text-align: right;
+
+  .list-players {
+    max-height: 220px;
+    overflow-y: scroll;
   }
-  .role-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  .modal-overlay {
+    position: fixed;
   }
+
   .role-item {
     display: flex;
     flex-direction: row;
     width: 50%;
   }
-  .main-role-list {
-    flex-direction: column;
+
+  .role-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .team-name {
+    margin-left: 20px;
   }
 }
