@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink, HashRouter as Router, Switch, Route } from "react-router-dom";
+import { NavLink, BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import TeamPage from "../Pages/TeamPage";
 import EditPage from "../Pages/EditPage";

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Link,
   RouteComponentProps,
 } from "react-router-dom";

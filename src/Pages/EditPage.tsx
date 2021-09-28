@@ -1,5 +1,10 @@
 import React from "react";
-import { HashRouter as Router, Route, NavLink, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  NavLink,
+  Switch,
+} from "react-router-dom";
 
 import AddPlayerPage from "./EditPages/AddPlayerPage";
 import AddTeamPage from "./EditPages/AddTeamPage";
@@ -24,14 +29,7 @@ function EditPage() {
             <li>Remove a player</li>
           </NavLink>
 
-          <NavLink
-            to="/options/add-team"
-            activeStyle={{ color: "red" }}
-            style={{
-              textDecoration: "none",
-              color: "black",
-            }}
-          >
+          <NavLink to="/options/add-team" className="edit-option">
             <li>Add a Team</li>
           </NavLink>
           <NavLink to="/options/remove-team" className="edit-option">

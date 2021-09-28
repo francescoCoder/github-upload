@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import { useSelector } from "react-redux";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Link,
   Route,
   Switch,
