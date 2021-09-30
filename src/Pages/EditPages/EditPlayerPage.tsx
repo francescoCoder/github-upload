@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import actions from "../../Redux/actions";
-import {
-  NullInitState,
-  PlayerType,
-  TeamType,
-} from "../../Components/interfaces";
+import { PlayerType, TeamType } from "../../Components/interfaces";
 import Modal from "../../Components/Modal";
 
 function EditPlayerPage() {
@@ -14,26 +10,37 @@ function EditPlayerPage() {
 
   const dispatch = useDispatch();
 
-  const state = useSelector((state: TeamType[]) => state);
+  const stateTeams = useSelector((state: any) => state.teams);
+  const statePlayers = useSelector((state: any) => state.players);
 
   const [birthDate, setBirthDate] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
   const [firstName, setFirstName] = useState("");
   const [foto, setFoto] = useState("");
   const [id, setId] = useState("");
-  const [playerIndex, setPlayerIndex] = useState<NullInitState>(null);
   const [popup, setPopup] = useState(false);
   const [role, setRole] = useState("");
   const [secondName, setSecondName] = useState("");
   const [team, setTeam] = useState("");
-  const [teamIndex, setTeamIndex] = useState<NullInitState>(null);
+  console.log(birthDate);
+  console.log(birthPlace);
+  console.log(firstName);
+  console.log(team);
+  console.log(id);
 
   const editPlayer = () => {
     return {
       type: EDIT_PLAYER,
-      teamIndex,
-      playerIndex,
-      player: { firstName, secondName, role, birthDate, birthPlace, foto, id },
+      player: {
+        firstName,
+        secondName,
+        role,
+        birthDate,
+        birthPlace,
+        foto,
+        id,
+        team,
+      },
     };
   };
 
@@ -42,49 +49,36 @@ function EditPlayerPage() {
     dispatch(editPlayer());
   };
 
-  useEffect(
-    () =>
-      setTeamIndex(state.findIndex((equipe: TeamType) => equipe.name === team)),
-    [state, team]
-  );
-
-  useEffect(
-    () =>
-      setPlayerIndex(
-        teamIndex !== null && state[teamIndex]
-          ? state[teamIndex].players.findIndex(
-              (player: PlayerType) => player.id === id
-            )
-          : null
-      ),
-    [id, state, teamIndex]
-  );
-
   const setProps = () => {
-    if (
-      teamIndex !== null &&
-      playerIndex !== null &&
-      state[teamIndex].players[playerIndex]
-    ) {
-      let player = state[teamIndex].players[playerIndex];
+    if (id) {
+      let player = statePlayers.find(
+        (selectedPlayer: any) => selectedPlayer.id === id
+      );
       setFirstName(player.firstName);
       setSecondName(player.secondName);
       setRole(player.role);
       setBirthDate(player.birthDate);
       setBirthPlace(player.birthPlace);
       setFoto(player.foto);
-      setId(player.id);
     }
   };
 
-  useEffect(setProps, [playerIndex, state, teamIndex]);
+  useEffect(setProps, [id, statePlayers]);
+
+  const setTeamAndResetId = (e: any) => {
+    setTeam(e.target.defaultValue);
+    setId("");
+  };
+
+  //----------------------------------
+
   return (
     <div className="form-fields">
       <p>Select the team:</p>
-      {state.map((equipe: TeamType) => (
+      {stateTeams.map((equipe: TeamType) => (
         <div key={equipe.name}>
           <input
-            onChange={(e) => setTeam(e.target.defaultValue)}
+            onChange={setTeamAndResetId}
             type="radio"
             value={equipe.name}
             name="team"
@@ -92,21 +86,22 @@ function EditPlayerPage() {
           <label>{equipe.name}</label>
         </div>
       ))}
-      {teamIndex !== null && <p>Now select the right player:</p>}
-      {teamIndex !== null &&
-        state[teamIndex] !== undefined &&
-        state[teamIndex].players.map((player: PlayerType) => (
-          <div key={player.id}>
-            <input
-              onChange={(e) => setId(e.target.defaultValue)}
-              type="radio"
-              value={player.id}
-              name="player"
-            />
-            <label>{`${player.firstName} ${player.secondName}`}</label>
-          </div>
-        ))}
-      {playerIndex !== null && (
+      {team && <p>Now select the right player:</p>}
+      {team &&
+        statePlayers
+          .filter((player: PlayerType) => player.team === team)
+          .map((player: PlayerType) => (
+            <div key={player.id}>
+              <input
+                onChange={(e) => setId(e.target.defaultValue)}
+                type="radio"
+                value={player.id}
+                name="player"
+              />
+              <label>{`${player.firstName} ${player.secondName}`}</label>
+            </div>
+          ))}
+      {id && (
         <div>
           <div className="input-and-label">
             <input
@@ -186,15 +181,6 @@ function EditPlayerPage() {
               onChange={(e) => setBirthPlace(e.target.value)}
             />
             <label>Modify birth place (format {"=>"} City, Country)</label>
-          </div>
-
-          <div className="input-and-label">
-            <input
-              type="text"
-              value={id}
-              onChange={(e) => setId(e.target.value)}
-            />
-            <label>Modify id</label>
           </div>
           <div className="input-and-label">
             <input

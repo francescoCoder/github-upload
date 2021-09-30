@@ -10,7 +10,7 @@ function EditTeamPage() {
 
   const dispatch = useDispatch();
 
-  const state = useSelector((state: TeamType[]) => state);
+  const stateTeams = useSelector((state: any) => state.teams);
 
   const [city, setCity] = useState("");
   const [firstColor, setFirstColor] = useState("");
@@ -24,13 +24,15 @@ function EditTeamPage() {
 
   useEffect(
     () =>
-      setTeamIndex(state.findIndex((eqipe: TeamType) => eqipe.name === team)),
-    [state, team]
+      setTeamIndex(
+        stateTeams.findIndex((eqipe: TeamType) => eqipe.name === team)
+      ),
+    [stateTeams, team]
   );
 
   const setProps = () => {
-    if (teamIndex !== null && state[teamIndex] !== undefined) {
-      let equipe = state[teamIndex];
+    if (teamIndex !== null && stateTeams[teamIndex] !== undefined) {
+      let equipe = stateTeams[teamIndex];
       setName(equipe.name);
       setCity(equipe.city);
       setLogo(equipe.logo);
@@ -40,11 +42,7 @@ function EditTeamPage() {
     }
   };
 
-  const setNewPlayersArr = () => {
-    return teamIndex !== null && state[teamIndex].players;
-  };
-
-  useEffect(setProps, [state, teamIndex]);
+  useEffect(setProps, [stateTeams, teamIndex]);
 
   const editTeam = () => {
     return {
@@ -57,7 +55,6 @@ function EditTeamPage() {
         firstColor,
         secondColor,
         id,
-        players: setNewPlayersArr(),
       },
     };
   };
@@ -70,8 +67,8 @@ function EditTeamPage() {
     <div className="form-fields">
       <div>
         <p>Select the team to edit</p>
-        {state.length > 0 ? (
-          state.map((equipe: TeamType) => (
+        {stateTeams.length > 0 ? (
+          stateTeams.map((equipe: TeamType) => (
             <div key={equipe.name}>
               <input
                 onChange={(e) => setTeam(e.target.defaultValue)}

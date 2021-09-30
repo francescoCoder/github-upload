@@ -10,7 +10,7 @@ function AddPlayerPage() {
 
   const dispatch = useDispatch();
 
-  const state = useSelector((state: TeamType[]) => state);
+  const stateTeams = useSelector((state: any) => state.teams);
 
   const [birthDate, setBirthDate] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
@@ -25,8 +25,8 @@ function AddPlayerPage() {
   const addPlayer = () => {
     return {
       type: ADD_PLAYER,
-      team,
       player: {
+        team,
         firstName,
         secondName,
         role,
@@ -47,8 +47,8 @@ function AddPlayerPage() {
     <div className="form-fields">
       <div>
         <p>Select the team</p>
-        {state.length > 0 ? (
-          state.map((equipe: TeamType) => (
+        {stateTeams.length > 0 ? (
+          stateTeams.map((equipe: TeamType) => (
             <div key={equipe.name}>
               <input
                 onChange={(e) => setTeam(e.target.defaultValue)}

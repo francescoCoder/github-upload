@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink, BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  NavLink,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 import TeamPage from "../Pages/TeamPage";
 import EditPage from "../Pages/EditPage";
@@ -10,7 +15,7 @@ import "../index.scss";
 //--------------------------------------------
 
 function Navbar() {
-  const state = useSelector((state: TeamType[]) => state);
+  const state: any = useSelector((state: any) => state.teams);
   const [teamSelected, setTeamSelected] = useState(false);
 
   return (

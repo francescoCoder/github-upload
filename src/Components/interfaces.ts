@@ -6,6 +6,7 @@ export interface PlayerType {
   birthPlace: string;
   id: string;
   foto: string;
+  team: string;
 }
 
 export interface TeamType {
@@ -15,7 +16,6 @@ export interface TeamType {
   logo: string;
   secondColor: string;
   id: string;
-  players: PlayerType[];
 }
 
 export interface TeamParams {

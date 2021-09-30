@@ -18,10 +18,13 @@ export const ToggledPlayersContext = createContext({});
 //---------------------------------------------
 
 function TeamPage({ match }: RouteComponentProps<TeamParams>) {
-  const state = useSelector((state: TeamType[]) => state);
+  const stateTeams = useSelector((state: any) => state.teams);
+  const statePlayers = useSelector((state: any) => state.players);
+
   const teamId = match.params.idTeam;
-  const team = state.find((equipe: TeamType) => equipe.id === teamId);
-  const players = team && team.players;
+  const team = stateTeams.find((equipe: TeamType) => equipe.id === teamId);
+  const players =
+    team && statePlayers.filter((player: any) => player.team === team.name);
   const teamName = team && team.name;
 
   const [isPlayersToggled, setIsPlayersToggled] = useState(false);

@@ -1,27 +1,45 @@
 import React, { useEffect } from "react";
-import { useDispatch , useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Navbar from "./Components/Navbar";
 import localStorage from "./localStorage";
+import actions from "./Redux/actions";
 
 import "./index.scss";
 //-------------------------------------------------------------
 
-
 function App() {
-  const state = useSelector((state) => state);
+  const state: any = useSelector((state) => state);
   const dispatch = useDispatch();
-  const updateState: any = () => {
-    return {
-      type: "UPDATE_STATE",
-      state: JSON.parse(localStorage.teams),
-    };
-  };
 
-  useEffect(() => dispatch(updateState()), [dispatch]);
+  useEffect(() => {
+    const { UPDATE_STATE_TEAMS } = actions;
+    const updateStateTeams: any = () => {
+      return {
+        type: UPDATE_STATE_TEAMS,
+        teams: JSON.parse(localStorage.teams),
+      };
+    };
+    dispatch(updateStateTeams());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const { UPDATE_STATE_PLAYERS } = actions;
+    const updateStatePlayers: any = () => {
+      return {
+        type: UPDATE_STATE_PLAYERS,
+        players: JSON.parse(localStorage.players),
+      };
+    };
+    dispatch(updateStatePlayers());
+  }, [dispatch]);
 
   useEffect(
-    () => localStorage.setItem("teams", JSON.stringify(state)),
+    () => localStorage.setItem("teams", JSON.stringify(state.teams)),
+    [dispatch, state]
+  );
+  useEffect(
+    () => localStorage.setItem("players", JSON.stringify(state.players)),
     [dispatch, state]
   );
   return (

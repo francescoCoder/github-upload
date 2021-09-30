@@ -27,7 +27,6 @@ function AddTeamPage() {
         firstColor,
         secondColor,
         id,
-        players: [],
       },
     };
   };

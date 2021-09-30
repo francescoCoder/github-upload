@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  NullInitState,
-  PlayerType,
-  TeamType,
-} from "../../Components/interfaces";
+import { PlayerType, TeamType } from "../../Components/interfaces";
 import Modal from "../../Components/Modal";
 
 import actions from "../../Redux/actions";
@@ -16,17 +12,16 @@ function RemovePlayerPage() {
 
   const dispatch = useDispatch();
 
-  const state = useSelector((state: TeamType[]) => state);
+  const stateTeams = useSelector((state: any) => state.teams);
+  const statePlayers = useSelector((state: any) => state.players);
 
   const [id, setId] = useState("");
   const [popup, setPopup] = useState(false);
   const [team, setTeam] = useState("");
-  const [teamIndex, setTeamIndex] = useState<NullInitState>(null);
 
   const removePlayer = () => {
     return {
       type: REMOVE_PLAYER,
-      team,
       id,
     };
   };
@@ -36,20 +31,12 @@ function RemovePlayerPage() {
     dispatch(removePlayer());
   };
 
-  useEffect(
-    () =>
-      setTeamIndex(
-        state.findIndex((element: TeamType) => element.name === team)
-      ),
-    [state, team]
-  );
-
   return (
     <div className="form-fields">
       <div>
         <p>Select the team:</p>
-        {state.length !== 0 ? (
-          state.map((equipe: TeamType) => (
+        {stateTeams.length > 0 ? (
+          stateTeams.map((equipe: TeamType) => (
             <div key={equipe.name}>
               <input
                 onChange={(e) => setTeam(e.target.defaultValue)}
@@ -67,12 +54,10 @@ function RemovePlayerPage() {
         )}
       </div>
       <div>
-        {teamIndex !== null && state[teamIndex] !== undefined && (
-          <p>Now select the player:</p>
-        )}
-        {teamIndex !== null &&
-          state[teamIndex] &&
-          state[teamIndex].players.map((player: PlayerType) => (
+        {team !== "" && <p>Now select the player:</p>}
+        {statePlayers
+          .filter((player: PlayerType) => player.team === team)
+          .map((player: PlayerType) => (
             <div key={player.id}>
               <input
                 onChange={(e) => setId(e.target.defaultValue)}
@@ -83,11 +68,9 @@ function RemovePlayerPage() {
               <label>{`${player.firstName} ${player.secondName}`}</label>
             </div>
           ))}
-        {teamIndex !== null &&
-          state[teamIndex] &&
-          state[teamIndex].players.length === 0 && (
-            <p className="alert">No players to display</p>
-          )}
+        {team !== "" &&
+          statePlayers.filter((player: PlayerType) => player.team === team)
+            .length === 0 && <p className="alert">No players to display</p>}
       </div>
       <button disabled={!(team && id)} onClick={removePlayerPopup}>
         Remove the selected Player
