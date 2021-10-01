@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import actions from "../../Redux/actions";
-import { PlayerType, TeamType } from "../../Components/interfaces";
+import { PlayerType, StateType, TeamType } from "../../Components/interfaces";
 import Modal from "../../Components/Modal";
 
 function EditPlayerPage() {
@@ -10,8 +10,8 @@ function EditPlayerPage() {
 
   const dispatch = useDispatch();
 
-  const stateTeams = useSelector((state: any) => state.teams);
-  const statePlayers = useSelector((state: any) => state.players);
+  const stateTeams = useSelector((state: StateType) => state.teams);
+  const statePlayers = useSelector((state: StateType) => state.players);
 
   const [birthDate, setBirthDate] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
@@ -51,8 +51,8 @@ function EditPlayerPage() {
 
   const setProps = () => {
     if (id) {
-      let player = statePlayers.find(
-        (selectedPlayer: any) => selectedPlayer.id === id
+      let player: any = statePlayers.find(
+        (selectedPlayer) => selectedPlayer.id === id
       );
       setFirstName(player.firstName);
       setSecondName(player.secondName);
@@ -65,7 +65,7 @@ function EditPlayerPage() {
 
   useEffect(setProps, [id, statePlayers]);
 
-  const setTeamAndResetId = (e: any) => {
+  const setTeamAndResetId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTeam(e.target.defaultValue);
     setId("");
   };

@@ -1,4 +1,5 @@
 import { AnyAction } from "redux";
+import { TeamType } from "../../Components/interfaces";
 import actions from "../actions";
 
 const { ADD_TEAM, REMOVE_TEAM, EDIT_TEAM, UPDATE_STATE_TEAMS } = actions;
@@ -15,7 +16,9 @@ export default function reducer(
       return [...state, action.team];
 
     case REMOVE_TEAM:
-      const newState = state.filter((team: any) => team.name !== action.name);
+      const newState = state.filter(
+        (team: TeamType) => team.name !== action.name
+      );
       return newState;
 
     case EDIT_TEAM:

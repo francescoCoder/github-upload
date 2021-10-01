@@ -6,15 +6,16 @@ import localStorage from "./localStorage";
 import actions from "./Redux/actions";
 
 import "./index.scss";
+import { StateType } from "./Components/interfaces";
 //-------------------------------------------------------------
 
 function App() {
-  const state: any = useSelector((state) => state);
+  const state = useSelector((state: StateType) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const { UPDATE_STATE_TEAMS } = actions;
-    const updateStateTeams: any = () => {
+    const updateStateTeams = () => {
       return {
         type: UPDATE_STATE_TEAMS,
         teams: JSON.parse(localStorage.teams),
@@ -25,7 +26,7 @@ function App() {
 
   useEffect(() => {
     const { UPDATE_STATE_PLAYERS } = actions;
-    const updateStatePlayers: any = () => {
+    const updateStatePlayers = () => {
       return {
         type: UPDATE_STATE_PLAYERS,
         players: JSON.parse(localStorage.players),

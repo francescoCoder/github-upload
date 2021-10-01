@@ -9,13 +9,13 @@ import {
 
 import TeamPage from "../Pages/TeamPage";
 import EditPage from "../Pages/EditPage";
-import { TeamType } from "./interfaces";
+import { StateType, TeamType } from "./interfaces";
 
 import "../index.scss";
 //--------------------------------------------
 
 function Navbar() {
-  const state: any = useSelector((state: any) => state.teams);
+  const state = useSelector((state: StateType) => state.teams);
   const [teamSelected, setTeamSelected] = useState(false);
 
   return (

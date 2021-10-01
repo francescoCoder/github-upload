@@ -18,6 +18,11 @@ export interface TeamType {
   id: string;
 }
 
+export interface StateType {
+  teams: TeamType[];
+  players: PlayerType[];
+}
+
 export interface TeamParams {
   idTeam: string;
 }
@@ -25,6 +30,11 @@ export interface TeamParams {
 export interface PlayerParams {
   teamId: string;
   playerId: string;
+}
+
+export interface ModalProps {
+  action: () => void;
+  message: string;
 }
 
 export type NullInitState = number | null;

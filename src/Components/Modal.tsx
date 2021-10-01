@@ -1,6 +1,7 @@
 import React from "react";
+import { ModalProps } from "./interfaces";
 
-function Modal(props: any) {
+function Modal(props: ModalProps) {
   return (
     <div className="modal-overlay" onClick={props.action}>
       <div className="modal-box">

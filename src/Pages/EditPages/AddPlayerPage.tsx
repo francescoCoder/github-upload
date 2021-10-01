@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TeamType } from "../../Components/interfaces";
+import { StateType, TeamType } from "../../Components/interfaces";
 import Modal from "../../Components/Modal";
 
 import actions from "../../Redux/actions";
@@ -10,7 +10,7 @@ function AddPlayerPage() {
 
   const dispatch = useDispatch();
 
-  const stateTeams = useSelector((state: any) => state.teams);
+  const stateTeams = useSelector((state: StateType) => state.teams);
 
   const [birthDate, setBirthDate] = useState("");
   const [birthPlace, setBirthPlace] = useState("");

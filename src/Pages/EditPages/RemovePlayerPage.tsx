@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { PlayerType, TeamType } from "../../Components/interfaces";
+import { PlayerType, StateType, TeamType } from "../../Components/interfaces";
 import Modal from "../../Components/Modal";
 
 import actions from "../../Redux/actions";
@@ -12,8 +12,8 @@ function RemovePlayerPage() {
 
   const dispatch = useDispatch();
 
-  const stateTeams = useSelector((state: any) => state.teams);
-  const statePlayers = useSelector((state: any) => state.players);
+  const stateTeams = useSelector((state: StateType) => state.teams);
+  const statePlayers = useSelector((state: StateType) => state.players);
 
   const [id, setId] = useState("");
   const [popup, setPopup] = useState(false);

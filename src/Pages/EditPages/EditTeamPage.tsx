@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NullInitState, TeamType } from "../../Components/interfaces";
+import {
+  NullInitState,
+  StateType,
+  TeamType,
+} from "../../Components/interfaces";
 import Modal from "../../Components/Modal";
 
 import actions from "../../Redux/actions";
@@ -10,7 +14,7 @@ function EditTeamPage() {
 
   const dispatch = useDispatch();
 
-  const stateTeams = useSelector((state: any) => state.teams);
+  const stateTeams = useSelector((state: StateType) => state.teams);
 
   const [city, setCity] = useState("");
   const [firstColor, setFirstColor] = useState("");
