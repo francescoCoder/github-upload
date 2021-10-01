@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch , useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Navbar from "./Components/Navbar";
 import localStorage from "./localStorage";
 
 import "./index.scss";
 //-------------------------------------------------------------
-
 
 function App() {
   const state = useSelector((state) => state);
@@ -24,6 +23,7 @@ function App() {
     () => localStorage.setItem("teams", JSON.stringify(state)),
     [dispatch, state]
   );
+  console.log(state);
   return (
     <div className="header">
       <h1>SERIE A </h1>
